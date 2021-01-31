@@ -279,22 +279,27 @@ var _hmt = _hmt || [];
   
   
   
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-  var cloudTieConfig = {
-    url: "http://example.com/2021/01/31/hello-world/", 
-    sourceId: "hello-world",
-    productKey: "2dba06fbf8d24c13915ea6c6aa7183b1",
-    target: "cloud-tie-wrapper"
-  };
+var gitment = new Gitment({
+  id: "http://example.com/2021/01/31/hello-world/",
+  owner: 'DYasher',
+  repo: 'DYasher.github.io',
+  oauth: {
+    client_id: 'c0133c84f641bf6617c9',
+    client_secret: 'e3336ce8d1362b95eea16327bc487f4c74501133',
+  },
+})
+gitment.render('gitment-ctn')
 </script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-  
-
-  
-
-  
-
   
 
 
