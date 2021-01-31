@@ -395,31 +395,30 @@ var _hmt = _hmt || [];
 
 
 
-  <div id="giteement-ctn"></div>
+
   
-    <link rel="stylesheet" href="/lib/default.css">
-    <script src="/lib/giteement.browser.js"></script>
+  <div id="gitment-ctn"></div>
+  
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
   <script>
-  <!-- id: "Hello World" -->
-  var giteement = new Giteement({
-    id: '20210131180157',
-    owner: 'asheryb',
-    repo: 'comment-repo',
-    backcall_uri: 'https://dyasher.github.io/',
-    oauth_uri: 'https://cors-anywhere.herokuapp.com/https://gitee.com/oauth/token',
-    oauth: {
-      client_id: 'd7d2a9334b9ffb16be366f3d8e4ebfdf86cacd0bc2d0a7419d08d39780bc1c37',
-      client_secret: 'ad0e5ebaf8b0960522df21754bf75ffed28198fd292ef2aef7f3a7fbb768e564'
-    },
-  })
-  giteement.render('giteement-ctn')
+    <!-- id: "Hello World" -->
+    var gitment = new Gitment({
+      id: "20210131180157",
+      owner: 'DYasher',
+      repo: 'DYasher.github.io',
+      oauth: {
+        client_id: 'c0133c84f641bf6617c9',
+        client_secret: 'e3336ce8d1362b95eea16327bc487f4c74501133',
+      },
+    })
+    gitment.render('gitment-ctn')
   </script>
 
 
-
-
-
+  
 
 
 
