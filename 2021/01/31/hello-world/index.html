@@ -19,9 +19,10 @@
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-31T10:01:57.091Z">
-<meta property="article:modified_time" content="2021-01-31T10:01:57.092Z">
+<meta property="article:modified_time" content="2021-01-31T21:57:24.619Z">
 <meta property="article:author" content="小邓同学">
-<meta property="article:tag" content="小邓同学，小邓同学的博客">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="前端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
@@ -104,7 +105,11 @@ var _hmt = _hmt || [];
 			
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" >随笔</a></li>
 			
+				<li><a href="/tags" >标签</a></li>
+			
 				<li><a target="_blank" rel="noopener" href="http://nas.mmzi.online:6045/index.php" >学习笔记</a></li>
+			
+				<li><a href="/categories" >文章分类</a></li>
 			
 			</ul>
 		</nav>
@@ -180,6 +185,10 @@ var _hmt = _hmt || [];
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -212,11 +221,15 @@ var _hmt = _hmt || [];
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a target="_blank" rel="noopener" href="http://nas.mmzi.online:6045/index.php">学习笔记</a></li>
+					<li style="width: 20%"><a href="/tags">标签</a></li>
+		        
+					<li style="width: 20%"><a target="_blank" rel="noopener" href="http://nas.mmzi.online:6045/index.php">学习笔记</a></li>
+		        
+					<li style="width: 20%"><a href="/categories">文章分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -284,7 +297,9 @@ var _hmt = _hmt || [];
   </header>
   
   <div class="article-entry" itemprop="articleBody">
-    
+   
+
+  
     <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
@@ -295,7 +310,8 @@ var _hmt = _hmt || [];
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
-    
+  
+
 
     
 
@@ -305,7 +321,37 @@ var _hmt = _hmt || [];
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端/HTML//" class="article-tag-list-link color5">HTML</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
     
 
@@ -367,6 +413,20 @@ var _hmt = _hmt || [];
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+    <a href="/2021/02/01/my-first-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          my-first-blog
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -524,6 +584,14 @@ var _hmt = _hmt || [];
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -574,7 +642,7 @@ var _hmt = _hmt || [];
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">本人是一名即将进入社会的大学生<br>建立此博客主要用途：<br>分享知识、学习笔记、<br>技术探讨、好的文章收藏整理<br><br>在本博客中如果涉及到版权问题，<br>请联系QQ:1583881877<br><br>如果对文章中有更好的看法，<br>请留下您宝贵的意见呦！！</div>
+  	  		<div class="aboutme-wrap" id="aboutme">本人是一名即将进入社会的大学生<br>建立此博客主要用途：<br>分享知识、学习笔记、<br>技术探讨、好的文章收藏整理<br><br>在本博客中如果涉及到版权问题<br>请联系QQ:1583881877<br><br>如果对文章中有更好的看法，<br>请在留言区留下您宝贵的意见呦！！</div>
   	  	
     	</section>
     
