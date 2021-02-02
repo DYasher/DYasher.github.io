@@ -40,33 +40,6 @@
   </entry>
   
   <entry>
-    <title>linux下错误代码E212: Can&#39;t open file for writing</title>
-    <link href="https://dyasher.github.io/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/"/>
-    <id>https://dyasher.github.io/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/</id>
-    <published>2021-02-02T07:27:34.000Z</published>
-    <updated>2021-02-02T09:50:35.605Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Linux下错误代码E212-Can’t-open-file-for-writing"><a href="#Linux下错误代码E212-Can’t-open-file-for-writing" class="headerlink" title="Linux下错误代码E212: Can’t open file for writing"></a>Linux下错误代码E212: Can’t open file for writing</h1><p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/20161012090602697.png" alt="20161012090602697"></p><p><strong>错误</strong>：</p><p>​        Linux下错误代码E212: Can’t open file for writing<a id="more"></a></p><p><strong>产生原因（一）：</strong></p><p>​        一般都是因为一次创建了文件夹同时创建了文件导致，vi /etc/test/test.txt</p><p><strong>解决方法</strong>：</p><p>​        手动 先进入etc目录下：<code>cd /etc/</code></p><p>​        手动创建文件夹docker：<code>mkdir test/</code></p><p>​        进入docker：<code>cd test/</code></p><p>​        创建demo.json文件并进入编辑：vi test.txt</p><p>​        按  i 进入编辑模式</p><p>​        编辑完后，按ESC退出编辑模式，然后保存并退出： <code>：wq</code>  </p><p><strong>产生原因（二）：</strong></p><p>​        用户权限不够，普通用户vi进行不了保存，需要使用超级用户才行</p><p><strong>解决办法：</strong></p><p>​        切换为超级用户再进行编辑</p><blockquote><p>根据以上问题延伸</p></blockquote><p>在使用vim 对文件或配置进行编辑的时候，在保存时发现当前用户没有写权限。又不想放弃当前编辑的内容，怎么办呢?</p><p><strong>解决办法：</strong></p><p>​        引用stackoverflow</p><p>​        “For some reason the file you are writing to cannot be created or overwritten.<br>​        The reason could be that you do not have permission to write in the directory<br>​        or the file name is not valid.</p><p>​        Vim has a builtin help system, I just quoted what it says to :h E212. You might want to edit the file as a superuser like sudo vim         FILE. Or if you don’t want to leave your existing vim session (and know have proper sudo rights), you can issue:</p><p>​        :w !sudo tee % &gt; /dev/null</p><p>​        Which will save the file. ”</p><p>这样文件的所有者还是root，依然没有写的权限，现在只要更改文件的所有者和组</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown 用户名:组名 文件名</span><br></pre></td></tr></table></figure><p>当你用上述方法强制写的时候，会提示如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#1) Respect the privacy of others.</span><br><span class="line">#2) Think before you type.</span><br><span class="line">#3) With great power comes great responsibility.</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Linux下错误代码E212-Can’t-open-file-for-writing&quot;&gt;&lt;a href=&quot;#Linux下错误代码E212-Can’t-open-file-for-writing&quot; class=&quot;headerlink&quot; title=&quot;Linux下错误代码E212: Can’t open file for writing&quot;&gt;&lt;/a&gt;Linux下错误代码E212: Can’t open file for writing&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;https://gitee.com/asheryb/my-images/raw/master/uPicBlog/20161012090602697.png&quot; alt=&quot;20161012090602697&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;错误&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;​        Linux下错误代码E212: Can’t open file for writing</summary>
-    
-    
-    
-    <category term="CentOS7" scheme="https://dyasher.github.io/categories/CentOS7/"/>
-    
-    <category term="Linux" scheme="https://dyasher.github.io/categories/CentOS7/Linux/"/>
-    
-    
-    <category term="Linux" scheme="https://dyasher.github.io/tags/Linux/"/>
-    
-    <category term="Vim" scheme="https://dyasher.github.io/tags/Vim/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CentOS 7设置ssh服务自动启动</title>
     <link href="https://dyasher.github.io/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/"/>
     <id>https://dyasher.github.io/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/</id>
