@@ -19,7 +19,7 @@
 <meta property="og:description" content="Spring注解开发Spring原始注解Spring是轻代码而重配置的框架，配置比较繁重，影响开发效率，所以注解开发是一种趋势，注解代替xml配置文 件可以简化配置，提高开发效率。 Spring原始注解主要是替代的配置">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-02-18T08:14:48.000Z">
-<meta property="article:modified_time" content="2021-02-18T08:40:50.020Z">
+<meta property="article:modified_time" content="2021-02-18T08:53:07.511Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="注解开发">
@@ -428,12 +428,13 @@ var _hmt = _hmt || [];
 <li>将需要进行测试Bean直接在测试类中进行注入 </li>
 </ul>
 <p><strong>Spring集成Junit步骤</strong> </p>
-<pre><code> 1. 导入spring集成Junit的坐标
- 2. 使用@Runwith注解替换原来的运行期 
- 3. 使用@ContextConﬁguration指定配置文件或配置类
- 4. 使用@Autowired注入需要测试的对象
- 5. 创建测试方法进行测试
-</code></pre>
+<ol>
+<li>导入spring集成Junit的坐标</li>
+<li>使用@Runwith注解替换原来的运行期 </li>
+<li>使用@ContextConﬁguration指定配置文件或配置类</li>
+<li>使用@Autowired注入需要测试的对象</li>
+<li>创建测试方法进行测试</li>
+</ol>
 <p><strong>导入spring集成Junit的坐标</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><strong>使用@Runwith注解替换原来的运行期</strong></p>
