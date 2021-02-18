@@ -7,23 +7,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://dyasher.github.io">
-  <title>小邓同学</title>
+  <title>Spring学习——快速上手Spring | 小邓同学</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="小邓同学，小邓同学的博客">
-    <meta name="description" content="小邓同学的博客"> -->
-  
-  <meta name="description" content="小邓同学的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小邓同学">
-<meta property="og:url" content="https://dyasher.github.io/index.html">
+  <meta name="description" content="HelloSpring导入jar包注意：Spring需要导入Commons-logging进行日志记录，我们利用maven，它会自动进行依赖下载。 12345&lt;dependency&gt;   &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;   &lt;artifactId&gt;spring-webmvc&lt;&#x2F;artifactId&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring学习——快速上手Spring">
+<meta property="og:url" content="https://dyasher.github.io/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/index.html">
 <meta property="og:site_name" content="小邓同学">
-<meta property="og:description" content="小邓同学的博客">
+<meta property="og:description" content="HelloSpring导入jar包注意：Spring需要导入Commons-logging进行日志记录，我们利用maven，它会自动进行依赖下载。 12345&lt;dependency&gt;   &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;   &lt;artifactId&gt;spring-webmvc&lt;&#x2F;artifactId&amp;">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-02-18T03:08:08.000Z">
+<meta property="article:modified_time" content="2021-02-18T06:38:56.249Z">
 <meta property="article:author" content="小邓同学">
-<meta property="article:tag" content="小邓同学，小邓同学的博客">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="事务管理">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
@@ -240,25 +239,25 @@ var _hmt = _hmt || [];
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-Spring学习——快速上手Spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Spring学习——快速上手Spring" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/">Spring学习——快速上手Spring</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Spring学习——快速上手Spring
     </h1>
   
 
 
   
   
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/" class="archive-article-date">
         <time datetime="2021-02-18T03:08:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
 </a>
@@ -266,6 +265,27 @@ var _hmt = _hmt || [];
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">9分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -274,10 +294,110 @@ var _hmt = _hmt || [];
     
     <h1 id="HelloSpring"><a href="#HelloSpring" class="headerlink" title="HelloSpring"></a>HelloSpring</h1><h2 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h2><p><strong>注意：Spring需要导入Commons-logging进行日志记录，我们利用maven，它会自动进行依赖下载。</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码
-    
-    <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/#more">more >></a>
-    
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码<a id="more"></a></h2><ol>
+<li><p>编写一个Hello实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> name;</span><br><span class="line">  &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;Hello,&quot;</span>+ name );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>编写我们的Spring配置文件，这里我们命名为applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--bean就是java对象 , 由Spring创建和管理--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.Hello&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Spring&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>进行测试</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="comment">//解析beans.xml文件 , 生成管理相应的Bean对象</span></span><br><span class="line">   ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;beans.xml&quot;</span>);</span><br><span class="line">   <span class="comment">//getBean : 参数即为spring配置文件中bean的id .</span></span><br><span class="line">   Hello hello = (Hello) context.getBean(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">   hello.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ul>
+<li>Hello 对象是谁创建的 ?   hello 对象是由Spring创建的 ？</li>
+<li>Hello 对象的属性是怎么设置的 ?   hello 对象的属性是由Spring容器设置的 ？</li>
+</ul>
+<h2 id="这个过程叫控制反转"><a href="#这个过程叫控制反转" class="headerlink" title="这个过程叫控制反转"></a>这个过程叫控制反转</h2><ul>
+<li>控制 : 谁来控制对象的创建 , 传统应用程序的对象是由程序本身控制创建的 , 使用Spring后 , 对象是由Spring来创建的</li>
+<li>反转 : 程序本身不创建对象 , 而变成<strong>被动的接收对象</strong> </li>
+</ul>
+<p><strong>控制 :</strong> 谁来控制对象的创建 , 传统应用程序的对象是由程序本身控制创建的 , 使用Spring后 , 对象是由Spring来创建的<br><strong>反转 :</strong> 程序本身不创建对象 , 而变成被动的接收对象 </p>
+<blockquote>
+<p>可以通过newClassPathXmlApplicationContext去浏览一下底层源码</p>
+</blockquote>
+<h2 id="修改案例一"><a href="#修改案例一" class="headerlink" title="修改案例一"></a>修改案例一</h2><p>我们在案例一中配置新的配置文件，添加配置文件applicationContext.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;MysqlImpl&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.dao.impl.UserDaoMySqlImpl&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;OracleImpl&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.dao.impl.UserDaoOracleImpl&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;ServiceImpl&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.service.impl.UserServiceImpl&quot;</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--注意: 这里的name并不是属性 , 而是set方法后面的那部分 , 首字母小写--&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--引用另外一个bean , 不是用value 而是用 ref--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;OracleImpl&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">   ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;beans.xml&quot;</span>);</span><br><span class="line">   UserServiceImpl serviceImpl = (UserServiceImpl) context.getBean(<span class="string">&quot;ServiceImpl&quot;</span>);</span><br><span class="line">   serviceImpl.getUser();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>OK , 到了现在 , 我们彻底不用再程序中去改动了，要实现不同的操作，只需要在xml配置文件中进行修改 , 所谓的IoC，一句话搞定 : <strong>对象由Spring 来创建 , 管理 , 装配 !</strong> </p>
+<h1 id="IOC创建对象的方式"><a href="#IOC创建对象的方式" class="headerlink" title="IOC创建对象的方式"></a>IOC创建对象的方式</h1><h2 id="通过无参构造方式创建"><a href="#通过无参构造方式创建" class="headerlink" title="通过无参构造方式创建"></a>通过无参构造方式创建</h2><ol>
+<li><p><strong>User.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;user无参构造方法&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;name=&quot;</span>+ name );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>applicationContext.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;user&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.User&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;kuangshen&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>测试类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">   ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;beans.xml&quot;</span>);</span><br><span class="line">   <span class="comment">//在执行getBean的时候, user已经创建好了 , 通过无参构造</span></span><br><span class="line">   User user = (User) context.getBean(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">   <span class="comment">//调用对象的方法 .</span></span><br><span class="line">   user.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果可以发下，在调用show方法之前，User对象已经通过无参构造初始化了</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="通过有参构造方式创建"><a href="#通过有参构造方式创建" class="headerlink" title="通过有参构造方式创建"></a>通过有参构造方式创建</h2><ol>
+<li><p><strong>User.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserT</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">UserT</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;name=&quot;</span>+ name );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>applicationContext.xml三种编写方式</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 第一种根据index参数下标设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userT&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.UserT&quot;</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- index指构造方法 , 下标从0开始 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">index</span>=<span class="string">&quot;0&quot;</span> <span class="attr">value</span>=<span class="string">&quot;kuangshen2&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 第二种根据参数名字设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userT&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.UserT&quot;</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- name指参数名 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;kuangshen2&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 第三种根据参数类型设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userT&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.UserT&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">type</span>=<span class="string">&quot;java.lang.String&quot;</span> <span class="attr">value</span>=<span class="string">&quot;kuangshen2&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testT</span><span class="params">()</span></span>&#123;</span><br><span class="line">   ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;beans.xml&quot;</span>);</span><br><span class="line">   UserT user = (UserT) context.getBean(<span class="string">&quot;userT&quot;</span>);</span><br><span class="line">   user.show();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>​    结论：在配置文件加载的时候。其中管理的对象都已经初始化了！</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="通过工厂方式创建"><a href="#通过工厂方式创建" class="headerlink" title="通过工厂方式创建"></a>通过工厂方式创建</h2><h3 id="工厂静态方法实例化"><a href="#工厂静态方法实例化" class="headerlink" title="工厂静态方法实例化"></a>工厂静态方法实例化</h3><blockquote>
+<p>工厂的静态方法返回Bean实例</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticFactoryBean</span> </span>&#123; </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UserDao <span class="title">createUserDao</span><span class="params">()</span></span>&#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.itheima.factory.StaticFactoryBean&quot;</span>   <span class="attr">factory-method</span>=<span class="string">&quot;createUserDao&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="工厂实例方法"><a href="#工厂实例方法" class="headerlink" title="工厂实例方法"></a>工厂实例方法</h3><blockquote>
+<p>实例化 工厂的非静态方法返回Bean实例</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicFactoryBean</span> </span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDao <span class="title">createUserDao</span><span class="params">()</span></span>&#123; </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;factoryBean&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.itheima.factory.DynamicFactoryBean&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">factory-bean</span>=<span class="string">&quot;factoryBean&quot;</span> <span class="attr">factory-method</span>=<span class="string">&quot;createUserDao&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Spring配置"><a href="#Spring配置" class="headerlink" title="Spring配置"></a>Spring配置</h1><h2 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h2><p>alias 设置别名 , 为bean设置别名 , 可以设置多个别名</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--设置别名：在获取Bean的时候可以使用别名获取--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">alias</span> <span class="attr">name</span>=<span class="string">&quot;userT&quot;</span> <span class="attr">alias</span>=<span class="string">&quot;userNew&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Bean的配置"><a href="#Bean的配置" class="headerlink" title="Bean的配置"></a>Bean的配置</h2><h3 id="Bean的标签的基本配置"><a href="#Bean的标签的基本配置" class="headerlink" title="Bean的标签的基本配置"></a>Bean的标签的基本配置</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><pre><code>      1. 用于配置对象交由Spring 来创建。
+      2. 默认情况下它调用的是类中的无参构造函数，如果没有无参构造函数则不能创建成功。
+</code></pre>
+<h4 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h4><p>  <strong>id：</strong>Bean实例在Spring容器中的唯一标识<br>  <strong>class：</strong>Bean的全限定名称 </p>
+<h4 id="Bean标签范围配置"><a href="#Bean标签范围配置" class="headerlink" title="Bean标签范围配置"></a>Bean标签范围配置</h4><p><strong>scope：</strong>指对象的作用范围，取值如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">范围</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>singleton</strong></td>
+<td align="left">默认值，单例的</td>
+</tr>
+<tr>
+<td align="left"><strong>prototype</strong></td>
+<td align="left">多例的</td>
+</tr>
+<tr>
+<td align="left"><strong>request</strong></td>
+<td align="left">WEB 项目中，Spring 创建一个 Bean 的对象，将对象存入到 request 域中</td>
+</tr>
+<tr>
+<td align="left"><strong>session</strong></td>
+<td align="left">WEB 项目中，Spring 创建一个 Bean 的对象，将对象存入到 session 域中</td>
+</tr>
+<tr>
+<td align="left"><strong>global session</strong></td>
+<td align="left">WEB 项目中，应用在 Portlet 环境，如果没有 Portlet 环境那么globalSession 相当于 session</td>
+</tr>
+</tbody></table>
+<p><strong>1）当scope的取值为singleton时</strong><br>Bean的实例化个数：1个<br>Bean的实例化时机：当Spring核心文件被加载时，实例化配置的Bean实例<br><strong>Bean的生命周期：</strong><br>对象创建：当应用加载，创建容器时，对象就被创建了<br>对象运行：只要容器在，对象一直活着<br>对象销毁：当应用卸载，销毁容器时，对象就被销毁了</p>
+<p><strong>2）当scope的取值为prototype时</strong><br>Bean的实例化个数：多个<br>Bean的实例化时机：当调用getBean()方法时实例化Bean<br><strong>Bean生命周期：</strong><br>对象创建：当使用对象时，创建新的对象实例<br>对象运行：只要对象在使用中，就一直活着<br>对象销毁：当对象长时间不用时，被 Java 的垃圾回收器回收了 </p>
+<h3 id="Bean生命周期配置"><a href="#Bean生命周期配置" class="headerlink" title="Bean生命周期配置"></a>Bean生命周期配置</h3><p><strong>init-method：</strong>指定类中的初始化方法名称<br><strong>destroy-method：</strong>指定类中销毁方法名称 </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--bean就是java对象,由Spring创建和管理--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   id 是bean的标识符,要唯一,如果没有配置id,name就是默认标识符，如果配置id,又配置了name,那么name是别名</span></span><br><span class="line"><span class="comment">   </span></span><br><span class="line"><span class="comment">   name可以设置多个别名,可以用逗号,分号,空格隔开</span></span><br><span class="line"><span class="comment">   如果不配置id和name,可以根据applicationContext.getBean(.class)获取对象;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">   class是bean的全限定名=包名+类名</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;hello&quot;</span> <span class="attr">name</span>=<span class="string">&quot;hello2 h2,h3;h4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.kuang.pojo.Hello&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Spring&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><p>团队的合作通过import来实现</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">&quot;&#123;path&#125;/beans.xml&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
     
 
     
@@ -321,16 +441,76 @@ var _hmt = _hmt || [];
 
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://dyasher.github.io/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring学习——概述及IOC理论推导</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -351,776 +531,37 @@ var _hmt = _hmt || [];
 
 
 
-  
-    <article id="post-Spring学习——概述及IOC理论推导" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/">Spring学习——概述及IOC理论推导</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/" class="archive-article-date">
-        <time datetime="2021-02-04T09:51:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/image-20210204175403714.png" alt="image-20210204175403714"></p>
-<h1 id="Spring简介"><a href="#Spring简介" class="headerlink" title="Spring简介"></a>Spring简介</h1><p><strong>Spring :</strong> 春天 —&gt;给软件行业带来了春天</p>
-<p>2002年，Rod Jahnson首次推出了Spring框架雏形interface21框架。</p>
-<p>2004年3月24日，Spring框架以interface21框架为基础，经过重新设计，发布了1.0正式版。</p>
-<p>很难想象Rod Johnson的学历 , 他是悉尼大学的博士，然而他的专业不是计算机，而是<strong>音乐学</strong>。</p>
-<p>Spring理念 : 使现有技术更加实用 . 本身就是一个大杂烩 , 整合现有的框架技术。
-    
-    <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IoC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">理论推导</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring学习——事务管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">Spring学习——事务管理</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/" class="archive-article-date">
-        <time datetime="2021-02-04T07:01:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h2><ul>
-<li><p>事务在项目开发过程中十分重要，涉及到数据的一致性的问题。</p>
-</li>
-<li><p>事务管理是企业级应用程序开发中必备技术，用来确保数据的完整性和一致性。</p>
-</li>
-<li><p>事务就是把一系列的动作作为一个独立的单元，这些动作要么全部完成，要么全部不起作用。
-    
-    <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git学习——简单了解Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/04/Git%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3Git/">Git学习——简单了解Git</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/04/Git%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3Git/" class="archive-article-date">
-        <time datetime="2021-02-04T03:12:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>在学习Git之前我们得先了解一个概念<strong>版本控制</strong>。</p>
-<h3 id="什么是版本控制？"><a href="#什么是版本控制？" class="headerlink" title="什么是版本控制？"></a>什么是版本控制？</h3><p><strong>版本控制（Revision control）</strong>是一种在开发的过程中用于管理我们对文件、目录或工程等内容的修改历史，方便查看更改历史记录，备份以便恢复以前的版本的软件工程技术。</p>
-    
-    <a class="article-more-a" href="/2021/02/04/Git%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3Git/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Git简单入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/04/Git%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3Git/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring学习——整合MyBatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/03/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B4%E5%90%88MyBatis/">Spring学习——整合MyBatis</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/03/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B4%E5%90%88MyBatis/" class="archive-article-date">
-        <time datetime="2021-02-03T08:03:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="回顾MyBatis"><a href="#回顾MyBatis" class="headerlink" title="回顾MyBatis"></a>回顾MyBatis</h1><h3 id="MyBatis的文件结构"><a href="#MyBatis的文件结构" class="headerlink" title="MyBatis的文件结构"></a>MyBatis的文件结构</h3><p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-02-03%20pm%204.07.28.png" alt="2021-02-03 pm 4.07.28"></p>
-<h3 id="编写工具数据库连接池工具"><a href="#编写工具数据库连接池工具" class="headerlink" title="编写工具数据库连接池工具"></a>编写工具数据库连接池工具</h3>
-    
-    <a class="article-more-a" href="/2021/02/03/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B4%E5%90%88MyBatis/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">整合Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/03/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B4%E5%90%88MyBatis/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Updates-were-rejected-because-the-tip-of-your-current-branch-is-behind" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/02/Updates-were-rejected-because-the-tip-of-your-current-branch-is-behind/">Updates were rejected because the tip of your current branch is behind</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/02/Updates-were-rejected-because-the-tip-of-your-current-branch-is-behind/" class="archive-article-date">
-        <time datetime="2021-02-02T08:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="Git版本回滚"><a href="#Git版本回滚" class="headerlink" title="Git版本回滚"></a>Git版本回滚</h1><h2 id="在本地版本回滚"><a href="#在本地版本回滚" class="headerlink" title="在本地版本回滚"></a>在本地版本回滚</h2><p>在使用git的时候，版本回滚一般使用在本地的<code>git commit</code> （把暂存区的东西提交到当前分支）后
-    
-    <a class="article-more-a" href="/2021/02/02/Updates-were-rejected-because-the-tip-of-your-current-branch-is-behind/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git push</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/git//" class="article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/02/Updates-were-rejected-because-the-tip-of-your-current-branch-is-behind/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
 
 
 
-  
-    <article id="post-Linux下错误代码E212-Can-t-open-file-for-writing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/">Linux下错误代码E212: Can&#39;t open file for writing</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/" class="archive-article-date">
-        <time datetime="2021-02-02T07:27:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-02</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="Linux下错误代码E212-Can’t-open-file-for-writing"><a href="#Linux下错误代码E212-Can’t-open-file-for-writing" class="headerlink" title="Linux下错误代码E212: Can’t open file for writing"></a>Linux下错误代码E212: Can’t open file for writing</h1><p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/20161012090602697.png" alt="20161012090602697"></p>
-<p><strong>错误</strong>：</p>
-<p>​        Linux下错误代码E212: Can’t open file for writing
-    
-    <a class="article-more-a" href="/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vim</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CentOS7//" class="article-tag-list-link color3">CentOS7</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CentOS7/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/02/Linux%E4%B8%8B%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81E212-Can-t-open-file-for-writing/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
-
-  
-    <article id="post-CentOS-7设置ssh服务自动启动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
   
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/">CentOS 7设置ssh服务自动启动</a>
-	
-    </h1>
-  
-
-
+  <div id="gitment-ctn"></div>
   
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
-<a href="/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/" class="archive-article-date">
-        <time datetime="2021-02-01T09:48:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
-</a>
+  <script>
+    <!-- id: "Spring学习——快速上手Spring" -->
+    var gitment = new Gitment({
+      id: "20210218110808",
+      owner: 'DYasher',
+      repo: 'DYasher.github.io',
+      oauth: {
+        client_id: 'c0133c84f641bf6617c9',
+        client_secret: 'e3336ce8d1362b95eea16327bc487f4c74501133',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
 
-  
-  
-    
 
   
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="SSH（Secure-SHell）"><a href="#SSH（Secure-SHell）" class="headerlink" title="SSH（Secure SHell）"></a>SSH（Secure SHell）</h2><p>SSH的英文全称是Secure SHell。通过使用SSH，你可以把所有传输的数据进行加密，这样“中间人”这种攻击方式就不可能实现了，而且也能够防止DNS和IP欺骗。还有一个额外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。SSH有很多功能，它既可以代替telnet，又可以为ftp、pop、甚至ppp提供一个安全的“通道”。</p>
-<p>SSH在Linux中的服务是sshd，安装openssh后才可开启。CentOS 7 安装后默认情况下是不启动sshd服务，即无法通过ssh服务远程连接。
-    
-    <a class="article-more-a" href="/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/#more">more >></a>
-    
-    
-
-    
-
-    
 
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CentOS//" class="article-tag-list-link color2">CentOS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CentOS/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CentOS/SSH//" class="article-tag-list-link color4">SSH</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/01/CentOS-7%E8%AE%BE%E7%BD%AEssh%E6%9C%8D%E5%8A%A1%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -1160,8 +601,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
