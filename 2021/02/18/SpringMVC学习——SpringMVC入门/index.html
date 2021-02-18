@@ -11,12 +11,12 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1、回顾MVC 1.1、什么是MVC MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。 是将业务逻辑、数据、显示分离的方法来组织代码。 MVC主要作用是降低了视图与业务逻辑间的双向偶合。 MVC不是一种设计模式，MVC是一种架构模式。当然不同的MVC存在差异。  Model（模型）：数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领">
+  <meta name="description" content="1、回顾MVC1.1、什么是MVC MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。 是将业务逻辑、数据、显示分离的方法来组织代码。 MVC主要作用是降低了视图与业务逻辑间的双向偶合。 MVC不是一种设计模式，MVC是一种架构模式。当然不同的MVC存在差异。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC学习——SpringMVC入门">
 <meta property="og:url" content="https://dyasher.github.io/2021/02/18/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SpringMVC%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="小邓同学">
-<meta property="og:description" content="1、回顾MVC 1.1、什么是MVC MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。 是将业务逻辑、数据、显示分离的方法来组织代码。 MVC主要作用是降低了视图与业务逻辑间的双向偶合。 MVC不是一种设计模式，MVC是一种架构模式。当然不同的MVC存在差异。  Model（模型）：数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领">
+<meta property="og:description" content="1、回顾MVC1.1、什么是MVC MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。 是将业务逻辑、数据、显示分离的方法来组织代码。 MVC主要作用是降低了视图与业务逻辑间的双向偶合。 MVC不是一种设计模式，MVC是一种架构模式。当然不同的MVC存在差异。">
 <meta property="og:locale">
 <meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/A84EB031438FAEC77E42CB07E72001EA.jpg">
 <meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-1.png">
@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-13.png">
 <meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-14.png">
 <meta property="article:published_time" content="2021-02-18T11:13:22.000Z">
-<meta property="article:modified_time" content="2021-02-18T11:27:53.030Z">
+<meta property="article:modified_time" content="2021-02-18T11:43:40.055Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="SpringMVC">
@@ -301,12 +301,11 @@ var _hmt = _hmt || [];
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><strong>1、回顾MVC</strong></p>
-<h3 id="1-1、什么是MVC"><a href="#1-1、什么是MVC" class="headerlink" title="1.1、什么是MVC"></a>1.1、什么是MVC</h3><ul>
+    <h2 id="1、回顾MVC"><a href="#1、回顾MVC" class="headerlink" title="1、回顾MVC"></a>1、回顾MVC</h2><h3 id="1-1、什么是MVC"><a href="#1-1、什么是MVC" class="headerlink" title="1.1、什么是MVC"></a>1.1、什么是MVC</h3><ul>
 <li>MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。</li>
 <li>是将业务逻辑、数据、显示分离的方法来组织代码。</li>
 <li>MVC主要作用是<strong>降低了视图与业务逻辑间的双向偶合</strong>。</li>
-<li>MVC不是一种设计模式，<strong>MVC是一种架构模式</strong>。当然不同的MVC存在差异。</li>
+<li>MVC不是一种设计模式，<strong>MVC是一种架构模式</strong>。当然不同的MVC存在差异。<a id="more"></a></li>
 </ul>
 <p><strong>Model（模型）：</strong>数据模型，提供要展示的数据，因此包含数据和行为，可以认为是领域模型或JavaBean组件（包含数据和行为），不过现在一般都分离开来：Value Object（数据Dao） 和 服务层（行为Service）。也就是模型提供了模型数据查询和模型数据的状态更新等功能，包括数据和业务。</p>
 <p><strong>View（视图）：</strong>负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。</p>
