@@ -243,6 +243,573 @@ var _hmt = _hmt || [];
             
 
   
+    <article id="post-Java基础——递归分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/20/Java%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E9%80%92%E5%BD%92%E5%88%86%E6%9E%90/">Java基础——递归分析</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/20/Java%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E9%80%92%E5%BD%92%E5%88%86%E6%9E%90/" class="archive-article-date">
+        <time datetime="2021-02-20T01:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="什么是递归"><a href="#什么是递归" class="headerlink" title="什么是递归"></a>什么是递归</h2><ul>
+<li>A方法调用B方法，我们很容易理解</li>
+<li>递归：A方法调用B方法，就是自己调用自己</li>
+</ul>
+<h2 id="递归简介"><a href="#递归简介" class="headerlink" title="递归简介"></a>递归简介</h2><p>利用递归可以使用简单的出现来解决一些复杂的问题，它通常<strong>把一个大型复杂的问题层层转化为一个与原问题相似的规模比较小的问题</strong>，递归策略只需要少量的程序就可以描述处解题过程所需要的重复计算，大大减少了程序代码量，<strong>递归的能力在于用有限的语句来定义对象无限的集合</strong>。</p>
+<p>递归结构包括两个部分：</p>
+<ul>
+<li>递归头：什么时候不调用自身的方法。如果没有头，将陷入死循环。头是尽头的意思。</li>
+<li>递归体：什么时候需要调用自身方法</li>
+</ul>
+<h2 id="测试递归"><a href="#测试递归" class="headerlink" title="测试递归"></a>测试递归</h2><h3 id="测试一"><a href="#测试一" class="headerlink" title="测试一"></a>测试一</h3><p>这种使用方式是错误的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.asher;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemoRecursion</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> TestDemoRecursion().test();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		test();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：会出现错误，栈溢出的错误。</p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220115155.png" alt="QQ20210220115122"></p>
+<h3 id="测试二"><a href="#测试二" class="headerlink" title="测试二"></a>测试二</h3><p><strong>实例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemoRecursion</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.print(f(<span class="number">5</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//阶乘例子</span></span><br><span class="line">	<span class="comment">//5！ 5*4*3*2*1</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> n * f(n - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>返回结果：</strong></p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122231.png" alt="QQ20210220122158"></p>
+<p><strong>分析结果：</strong></p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122929.png" alt="202102201220"></p>
+<p>边界条件：边界值(n==1)</p>
+<p>前阶段：f(n)</p>
+<p>返回阶段：n*(n-1)</p>
+<blockquote>
+<p>缺点：能不用递归则不用递归，基数比较小的时候可以考虑递归用法</p>
+</blockquote>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220123044.png" alt="202102201227"></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递归</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java/JavaSE//" class="article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/20/Java%E5%9F%BA%E7%A1%80%E2%80%94%E2%80%94%E9%80%92%E5%BD%92%E5%88%86%E6%9E%90/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringMVC学习——Json交互处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Json%E4%BA%A4%E4%BA%92%E5%A4%84%E7%90%86/">SpringMVC学习——Json交互处理</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Json%E4%BA%A4%E4%BA%92%E5%A4%84%E7%90%86/" class="archive-article-date">
+        <time datetime="2021-02-20T01:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h2><ul>
+<li>JSON(JavaScript Object Notation， JS 对象标记) 是一种轻量级的数据交换格式，<strong>目前使用特别广泛</strong>。</li>
+<li>采用完全独立于编程语言的<strong>文本格式</strong>来存储和表示数据。</li>
+<li>简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。</li>
+<li>易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</li>
+</ul>
+<p>在 JavaScript 语言中，<strong>一切都是对象</strong>。因此，任何JavaScript 支持的类型都可以通过 JSON 来表示，例如字符串、数字、对象、数组等。看看他的要求和语法格式：</p>
+<ul>
+<li>对象表示为键值对，数据由逗号分隔</li>
+<li>花括号保存对象</li>
+<li>方括号保存数组</li>
+</ul>
+<p><strong>JSON 键值对</strong>是用来保存 JavaScript 对象的一种方式，和 JavaScript 对象的写法也大同小异，键/值对组合中的键名写在前面并用双引号 <strong>“”</strong> 包裹，使用冒号 <strong>:</strong> 分隔，然后紧接着值：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">&quot;name&quot;</span>: <span class="string">&quot;QinJiang&quot;</span>&#125;</span><br><span class="line">&#123;<span class="attr">&quot;age&quot;</span>: <span class="string">&quot;3&quot;</span>&#125;</span><br><span class="line">&#123;<span class="attr">&quot;sex&quot;</span>: <span class="string">&quot;男&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>很多人搞不清楚 JSON 和 JavaScript 对象的关系，甚至连谁是谁都不清楚。</p>
+</blockquote>
+<p>其实，可以这么理解：JSON 是 JavaScript 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>: <span class="string">&#x27;Hello&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;World&#x27;</span>&#125;; <span class="comment">//这是一个对象，注意键名也是可以使用引号包裹的</span></span><br><span class="line"><span class="keyword">var</span> json = <span class="string">&#x27;&#123;&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;&#125;&#x27;</span>; <span class="comment">//这是一个 JSON 字符串，本质是一个字符串</span></span><br></pre></td></tr></table></figure>
+<h3 id="JSON-和-JavaScript-对象互转"><a href="#JSON-和-JavaScript-对象互转" class="headerlink" title="JSON 和 JavaScript 对象互转"></a><strong>JSON 和 JavaScript 对象互转</strong></h3><p>要实现从JSON字符串转换为JavaScript 对象，使用 JSON.parse() 方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="built_in">JSON</span>.parse(<span class="string">&#x27;&#123;&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;&#125;&#x27;</span>);</span><br><span class="line"><span class="comment">//结果是 &#123;a: &#x27;Hello&#x27;, b: &#x27;World&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+<p>要实现从JavaScript 对象转换为JSON字符串，使用 JSON.stringify() 方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> json = <span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>: <span class="string">&#x27;Hello&#x27;</span>, <span class="attr">b</span>: <span class="string">&#x27;World&#x27;</span>&#125;);</span><br><span class="line"><span class="comment">//结果是 &#x27;&#123;&quot;a&quot;: &quot;Hello&quot;, &quot;b&quot;: &quot;World&quot;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><p>1、新建一个module ，springmvc-05-json ， 添加web的支持</p>
+<p>2、在web目录下新建一个 json-1.html ， 编写测试内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">title</span>&gt;</span>JSON_Asher<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">   <span class="comment">//编写一个js的对象</span></span></span><br><span class="line"><span class="javascript">   <span class="keyword">var</span> user = &#123;</span></span><br><span class="line"><span class="javascript">       name:<span class="string">&quot;Asher&quot;</span>,</span></span><br><span class="line">       age:3,</span><br><span class="line"><span class="javascript">       sex:<span class="string">&quot;男&quot;</span></span></span><br><span class="line">  &#125;;</span><br><span class="line"><span class="javascript">   <span class="comment">//将js对象转换成json字符串</span></span></span><br><span class="line"><span class="javascript">   <span class="keyword">var</span> str = <span class="built_in">JSON</span>.stringify(user);</span></span><br><span class="line"><span class="javascript">   <span class="built_in">console</span>.log(str);</span></span><br><span class="line">   </span><br><span class="line"><span class="javascript">   <span class="comment">//将json字符串转换为js对象</span></span></span><br><span class="line"><span class="javascript">   <span class="keyword">var</span> user2 = <span class="built_in">JSON</span>.parse(str);</span></span><br><span class="line"><span class="javascript">   <span class="built_in">console</span>.log(user2.age,user2.name,user2.sex);</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、在IDEA中使用浏览器打开，查看控制台输出！</p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220165044.png" alt="QQ截图20210220165027"></p>
+<h3 id="Controller返回JSON数据"><a href="#Controller返回JSON数据" class="headerlink" title="Controller返回JSON数据"></a>Controller返回JSON数据</h3><h4 id="测试Jackson"><a href="#测试Jackson" class="headerlink" title="测试Jackson"></a>测试Jackson</h4><p>Jackson应该是目前比较好的json解析工具了。</p>
+<p>当然工具不止这一个，比如还有阿里巴巴的 <strong>fastjson</strong> 等等。</p>
+<p>我们这里使用Jackson，使用它需要导入它的jar包；</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>配置SpringMVC需要的配置</p>
+<p><strong>web.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">version</span>=<span class="string">&quot;4.0&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--1.注册servlet--&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!--通过初始化参数指定SpringMVC配置文件的位置，进行关联--&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc-servlet.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 启动顺序，数字越小，启动越早 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!--所有请求都会被springmvc拦截 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>SpringMVC<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>springmvc-servlet.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xmlns:mvc</span>=<span class="string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">       https://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/mvc</span></span></span><br><span class="line"><span class="tag"><span class="string">       https://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!-- 自动扫描指定的包，下面所有注解类交给IOC容器管理 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.asher.controller&quot;</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">&lt;!-- 视图解析器 --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">id</span>=<span class="string">&quot;internalResourceViewResolver&quot;</span>&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 前缀 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;prefix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;/WEB-INF/jsp/&quot;</span> /&gt;</span></span><br><span class="line">       <span class="comment">&lt;!-- 后缀 --&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;suffix&quot;</span> <span class="attr">value</span>=<span class="string">&quot;.jsp&quot;</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>编写一个实体类<strong>User.java</strong>，编写测试Controller</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lombok.AllArgsConstructor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> lombok.NoArgsConstructor;</span><br><span class="line"></span><br><span class="line"><span class="comment">//需要导入lombok</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> String name;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">   <span class="keyword">private</span> String sex;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们需要两个新东西，一个是**@ResponseBody<strong>，配合</strong>Controller<strong>使用。一个是</strong>ObjectMapper对象**，我们看下具体的用法。</p>
+<p><strong>编写Controller</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/json1&quot;)</span></span><br><span class="line">   <span class="meta">@ResponseBody</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">json1</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">       <span class="comment">//创建一个jackson的对象映射器，用来解析数据</span></span><br><span class="line">       ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">       <span class="comment">//创建一个对象</span></span><br><span class="line">       User user = <span class="keyword">new</span> User(<span class="string">&quot;小明1号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       <span class="comment">//将我们的对象解析成为json格式</span></span><br><span class="line">       String str = mapper.writeValueAsString(user);</span><br><span class="line">       <span class="comment">//由于@ResponseBody注解，这里会将str转成json格式返回；十分方便</span></span><br><span class="line">       <span class="keyword">return</span> str;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置Tomcat ， 启动测试一下！</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/json1">http://localhost:8080/json1</a></p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220172409.png" alt="QQ截图20210220172354"></p>
+<p>发现出现了乱码问题，我们需要设置一下他的编码格式为utf-8，以及它返回的类型；</p>
+<p>通过@RequestMaping的<strong>produces</strong>属性来实现，修改下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//produces:指定响应体返回类型和编码</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/json1&quot;,produces = &quot;application/json;charset=utf-8&quot;)</span></span><br></pre></td></tr></table></figure>
+<p>再次测试， <a target="_blank" rel="noopener" href="http://localhost:8080/json1">http://localhost:8080/json1</a> </p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220172543.png" alt="QQ截图20210220172532"></p>
+<blockquote>
+<p>【注意：使用json记得处理乱码问题】</p>
+</blockquote>
+<h5 id="乱码统一解决"><a href="#乱码统一解决" class="headerlink" title="乱码统一解决"></a>乱码统一解决</h5><p>上一种方法比较麻烦，如果项目中有许多请求则每一个都要添加，可以通过Spring配置统一指定，这样就不用每次都去处理了！</p>
+<p>我们可以在springmvc的配置文件上添加一段消息StringHttpMessageConverter转换配置！</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">mvc:message-converters</span> <span class="attr">register-defaults</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">&quot;UTF-8&quot;</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;objectMapper&quot;</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;</span>&gt;</span></span><br><span class="line">                   <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;failOnEmptyBeans&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>/&gt;</span></span><br><span class="line">               <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="返回json字符串统一解决"><a href="#返回json字符串统一解决" class="headerlink" title="返回json字符串统一解决"></a>返回json字符串统一解决</h5><p>在类上直接使用 <strong>@RestController</strong> ，这样子，里面所有的方法都只会返回 json 字符串了，不用再每一个都添加**@ResponseBody** ！我们在前后端分离开发中，一般都使用 <strong>@RestController</strong> ，十分便捷！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//produces:指定响应体返回类型和编码</span></span><br><span class="line">   <span class="meta">@RequestMapping(value = &quot;/json1&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">json1</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">       <span class="comment">//创建一个jackson的对象映射器，用来解析数据</span></span><br><span class="line">       ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">       <span class="comment">//创建一个对象</span></span><br><span class="line">       User user = <span class="keyword">new</span> User(<span class="string">&quot;小明1号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       <span class="comment">//将我们的对象解析成为json格式</span></span><br><span class="line">       String str = mapper.writeValueAsString(user);</span><br><span class="line">       <span class="comment">//由于@RestController注解，这里会将str转成json格式返回；十分方便</span></span><br><span class="line">       <span class="keyword">return</span> str;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="测试输出集合"><a href="#测试输出集合" class="headerlink" title="测试输出集合"></a>测试输出集合</h5><p>新增一个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/json2&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">json2</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//创建一个jackson的对象映射器，用来解析数据</span></span><br><span class="line">   ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">   <span class="comment">//创建一个对象</span></span><br><span class="line">   User user1 = <span class="keyword">new</span> User(<span class="string">&quot;小明1号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">   User user2 = <span class="keyword">new</span> User(<span class="string">&quot;小明2号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">   User user3 = <span class="keyword">new</span> User(<span class="string">&quot;小明3号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">   User user4 = <span class="keyword">new</span> User(<span class="string">&quot;小明4号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">   List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">   list.add(user1);</span><br><span class="line">   list.add(user2);</span><br><span class="line">   list.add(user3);</span><br><span class="line">   list.add(user4);</span><br><span class="line"></span><br><span class="line">   <span class="comment">//将我们的对象解析成为json格式</span></span><br><span class="line">   String str = mapper.writeValueAsString(list);</span><br><span class="line">   <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220174103.png" alt="QQ截图20210220174045"></p>
+<h5 id="输出时间对象"><a href="#输出时间对象" class="headerlink" title="输出时间对象"></a>输出时间对象</h5><p>新增一个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/json3&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">json3</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line"></span><br><span class="line">   ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">   <span class="comment">//创建时间一个对象，java.util.Date</span></span><br><span class="line">   Date date = <span class="keyword">new</span> Date();</span><br><span class="line">   <span class="comment">//将我们的对象解析成为json格式</span></span><br><span class="line">   String str = mapper.writeValueAsString(date);</span><br><span class="line">   <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220174113.png" alt="QQ截图20210220173953"></p>
+<ul>
+<li>默认日期格式会变成一个数字，是1970年1月1日到当前日期的毫秒数！<strong>时间戳</strong></li>
+<li>Jackson 默认是会把时间转成timestamps形式</li>
+</ul>
+<p><strong>解决方案：取消timestamps形式 ， 自定义时间格式</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/json4&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">json4</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line"></span><br><span class="line">   ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line"></span><br><span class="line">   <span class="comment">//不使用时间戳的方式</span></span><br><span class="line">   mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, <span class="keyword">false</span>);</span><br><span class="line">   <span class="comment">//自定义日期格式对象</span></span><br><span class="line">   SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">   <span class="comment">//指定日期格式</span></span><br><span class="line">   mapper.setDateFormat(sdf);</span><br><span class="line"></span><br><span class="line">   Date date = <span class="keyword">new</span> Date();</span><br><span class="line">   String str = mapper.writeValueAsString(date);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220174358.png" alt="QQ截图20210220174342"></p>
+<h5 id="抽取为工具类"><a href="#抽取为工具类" class="headerlink" title="抽取为工具类"></a>抽取为工具类</h5><p><strong>如果要经常使用的话，这样是比较麻烦的，我们可以将这些代码封装到一个工具类中；我们去编写下，体验一下这种写法，和很多已经封装好的类是一样的 ，其实是一种思想，当我们浏览源码的时候会发现，这种写法很普遍。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.SerializationFeature;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonUtils</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getJson</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//给定一个默认的的格式，如果不调用就不需要，默认就行，只要传入object</span></span><br><span class="line">       <span class="keyword">return</span> getJson(object,<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getJson</span><span class="params">(Object object,String dateFormat)</span> </span>&#123;</span><br><span class="line">       ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();</span><br><span class="line">       <span class="comment">//不使用时间差的方式</span></span><br><span class="line">       mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, <span class="keyword">false</span>);</span><br><span class="line">       <span class="comment">//自定义日期格式对象</span></span><br><span class="line">       SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(dateFormat);</span><br><span class="line">       <span class="comment">//指定日期格式</span></span><br><span class="line">       mapper.setDateFormat(sdf);</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="keyword">return</span> mapper.writeValueAsString(object);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们使用工具类，代码就更加简洁了！</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/json5&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">json5</span><span class="params">()</span> <span class="keyword">throws</span> JsonProcessingException </span>&#123;</span><br><span class="line">   Date date = <span class="keyword">new</span> Date();</span><br><span class="line">   String json = JsonUtils.getJson(date);</span><br><span class="line">   <span class="keyword">return</span> json;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="测试FastJson"><a href="#测试FastJson" class="headerlink" title="测试FastJson"></a>测试FastJson</h4><p>fastjson.jar是阿里开发的一款专门用于Java开发的包，可以方便的实现json对象与JavaBean对象的转换，实现JavaBean对象与json字符串的转换，实现json对象与json字符串的转换。实现json的转换方法很多，最后的实现结果都是一样的。</p>
+<p>fastjson 的 pom依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.60<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="fastjson-三个主要的类"><a href="#fastjson-三个主要的类" class="headerlink" title="fastjson 三个主要的类"></a>fastjson 三个主要的类</h5><p><strong>JSONObject  代表 json 对象</strong> </p>
+<ul>
+<li>JSONObject实现了Map接口, 猜想 JSONObject底层操作是由Map实现的。</li>
+<li>JSONObject对应json对象，通过各种形式的get()方法可以获取json对象中的数据，也可利用诸如size()，isEmpty()等方法获取”键：值”对的个数和判断是否为空。其本质是通过实现Map接口并调用接口中的方法完成的。</li>
+</ul>
+<p><strong>JSONArray  代表 json 对象数组</strong></p>
+<ul>
+<li>内部是有List接口中的方法来完成操作的。</li>
+</ul>
+<p><strong>JSON代表 JSONObject和JSONArray的转化</strong></p>
+<ul>
+<li>JSON类源码分析与使用</li>
+<li>仔细观察这些方法，主要是实现json对象，json对象数组，javabean对象，json字符串之间的相互转化。</li>
+</ul>
+<p><strong>代码测试</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kuang.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span><br><span class="line"><span class="keyword">import</span> com.kuang.pojo.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FastJsonDemo</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//创建一个对象</span></span><br><span class="line">       User user1 = <span class="keyword">new</span> User(<span class="string">&quot;小明1号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       User user2 = <span class="keyword">new</span> User(<span class="string">&quot;小明2号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       User user3 = <span class="keyword">new</span> User(<span class="string">&quot;小明3号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       User user4 = <span class="keyword">new</span> User(<span class="string">&quot;小明4号&quot;</span>, <span class="number">3</span>, <span class="string">&quot;男&quot;</span>);</span><br><span class="line">       List&lt;User&gt; list = <span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">       list.add(user1);</span><br><span class="line">       list.add(user2);</span><br><span class="line">       list.add(user3);</span><br><span class="line">       list.add(user4);</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">&quot;*******Java对象 转 JSON字符串*******&quot;</span>);</span><br><span class="line">       String str1 = JSON.toJSONString(list);</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.toJSONString(list)==&gt;&quot;</span>+str1);</span><br><span class="line">       String str2 = JSON.toJSONString(user1);</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.toJSONString(user1)==&gt;&quot;</span>+str2);</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">&quot;\n****** JSON字符串 转 Java对象*******&quot;</span>);</span><br><span class="line">       User jp_user1=JSON.parseObject(str2,User.class);</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.parseObject(str2,User.class)==&gt;&quot;</span>+jp_user1);</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">&quot;\n****** Java对象 转 JSON对象 ******&quot;</span>);</span><br><span class="line">       JSONObject jsonObject1 = (JSONObject) JSON.toJSON(user2);</span><br><span class="line">       System.out.println(<span class="string">&quot;(JSONObject) JSON.toJSON(user2)==&gt;&quot;</span>+jsonObject1.getString(<span class="string">&quot;name&quot;</span>));</span><br><span class="line"></span><br><span class="line">       System.out.println(<span class="string">&quot;\n****** JSON对象 转 Java对象 ******&quot;</span>);</span><br><span class="line">       User to_java_user = JSON.toJavaObject(jsonObject1, User.class);</span><br><span class="line">       System.out.println(<span class="string">&quot;JSON.toJavaObject(jsonObject1, User.class)==&gt;&quot;</span>+to_java_user);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JSON</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据交互</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC//" class="article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94Json%E4%BA%A4%E4%BA%92%E5%A4%84%E7%90%86/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringMVC学习——数据处理以及跳转" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%A5%E5%8F%8A%E8%B7%B3%E8%BD%AC/">SpringMVC学习——数据处理以及跳转</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%A5%E5%8F%8A%E8%B7%B3%E8%BD%AC/" class="archive-article-date">
+        <time datetime="2021-02-20T01:46:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="结果跳转方法"><a href="#结果跳转方法" class="headerlink" title="结果跳转方法"></a>结果跳转方法</h1><h2 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h2><p>设置ModelAndView对象 ，根据view的名称 ，和<strong>视图解析器</strong>跳到指定的页面。</p>
+<p><strong>页面：</strong>{视图解析器前缀} + viewName +{视图解析器后缀}
+    
+    <a class="article-more-a" href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%A5%E5%8F%8A%E8%B7%B3%E8%BD%AC/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">页面跳转</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据处理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC//" class="article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/20/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E4%BB%A5%E5%8F%8A%E8%B7%B3%E8%BD%AC/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-SpringMVC学习——SpringMVC初步了解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/19/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SpringMVC%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">SpringMVC学习——SpringMVC初步了解</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/19/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SpringMVC%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/" class="archive-article-date">
+        <time datetime="2021-02-19T14:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="SpringMVC基础入门"><a href="#SpringMVC基础入门" class="headerlink" title="SpringMVC基础入门"></a>SpringMVC基础入门</h1><h2 id="配置版"><a href="#配置版" class="headerlink" title="配置版"></a>配置版</h2><p>1、新建一个Moudle ， springmvc-01-hello ， 添加web的支持！</p>
+<p>2、确定导入了SpringMVC 的依赖！
+    
+    <a class="article-more-a" href="/2021/02/19/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SpringMVC%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SpringMVC基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC//" class="article-tag-list-link color5">SpringMVC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/SpringMVC/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/19/SpringMVC%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94SpringMVC%E5%88%9D%E6%AD%A5%E4%BA%86%E8%A7%A3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringMVC学习——SpringMVC入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -315,11 +882,11 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
+        			<a href="/categories/SpringMVC//" class="article-tag-list-link color5">SpringMVC</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
+        			<a href="/categories/SpringMVC/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
         		</li>
       		
 		</ul>
@@ -914,457 +1481,6 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-Spring学习——依赖注入（DI）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88DI%EF%BC%89/">Spring学习——依赖注入（DI）</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88DI%EF%BC%89/" class="archive-article-date">
-        <time datetime="2021-02-18T07:02:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="依赖注入（DI）入门"><a href="#依赖注入（DI）入门" class="headerlink" title="依赖注入（DI）入门"></a>依赖注入（DI）入门</h1><ol>
-<li><p>创建 UserService，UserService 内部在调用 UserDao的save() 方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">	    <span class="meta">@Override</span></span><br><span class="line">	    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	           ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">	           UserDao userDao = (UserDao) applicationContext.getBean(<span class="string">&quot;userDao&quot;</span>);</span><br><span class="line">	            userDao.save();</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>将 UserServiceImpl 的创建权交给 Spring
-    
-    <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88DI%EF%BC%89/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">依赖注入</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88DI%EF%BC%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring学习——快速上手Spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/">Spring学习——快速上手Spring</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/" class="archive-article-date">
-        <time datetime="2021-02-18T03:08:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-18</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="HelloSpring"><a href="#HelloSpring" class="headerlink" title="HelloSpring"></a>HelloSpring</h1><h2 id="导入jar包"><a href="#导入jar包" class="headerlink" title="导入jar包"></a>导入jar包</h2><p><strong>注意：Spring需要导入Commons-logging进行日志记录，我们利用maven，它会自动进行依赖下载。</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码
-    
-    <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">快速入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/18/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8BSpring/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring学习——概述及IOC理论推导" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/">Spring学习——概述及IOC理论推导</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/" class="archive-article-date">
-        <time datetime="2021-02-04T09:51:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/image-20210204175403714.png" alt="image-20210204175403714"></p>
-<h1 id="Spring简介"><a href="#Spring简介" class="headerlink" title="Spring简介"></a>Spring简介</h1><p><strong>Spring :</strong> 春天 —&gt;给软件行业带来了春天</p>
-<p>2002年，Rod Jahnson首次推出了Spring框架雏形interface21框架。</p>
-<p>2004年3月24日，Spring框架以interface21框架为基础，经过重新设计，发布了1.0正式版。</p>
-<p>很难想象Rod Johnson的学历 , 他是悉尼大学的博士，然而他的专业不是计算机，而是<strong>音乐学</strong>。</p>
-<p>Spring理念 : 使现有技术更加实用 . 本身就是一个大杂烩 , 整合现有的框架技术。
-    
-    <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IoC</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">理论推导</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E6%A6%82%E8%BF%B0%E5%8F%8AIOC%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring学习——事务管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">Spring学习——事务管理</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/" class="archive-article-date">
-        <time datetime="2021-02-04T07:01:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="什么是事务"><a href="#什么是事务" class="headerlink" title="什么是事务"></a>什么是事务</h2><ul>
-<li><p>事务在项目开发过程中十分重要，涉及到数据的一致性的问题。</p>
-</li>
-<li><p>事务管理是企业级应用程序开发中必备技术，用来确保数据的完整性和一致性。</p>
-</li>
-<li><p>事务就是把一系列的动作作为一个独立的单元，这些动作要么全部完成，要么全部不起作用。
-    
-    <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务管理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring//" class="article-tag-list-link color2">Spring</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Spring/SSM框架学习//" class="article-tag-list-link color3">SSM框架学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/04/Spring%E5%AD%A6%E4%B9%A0%E2%80%94%E2%80%94%E4%BA%8B%E5%8A%A1%E7%AE%A1%E7%90%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1566,6 +1682,34 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">MVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">递归</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SpringMVC基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">页面跳转</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据交互</a>
               </li>
             
             <div class="clearfix"></div>
