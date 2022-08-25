@@ -18,17 +18,17 @@
 <meta property="og:site_name" content="小邓同学">
 <meta property="og:description" content="什么是递归 A方法调用B方法，我们很容易理解 递归：A方法调用B方法，就是自己调用自己  递归简介利用递归可以使用简单的出现来解决一些复杂的问题，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模比较小的问题，递归策略只需要少量的程序就可以描述处解题过程所需要的重复计算，大大减少了程序代码量，递归的能力在于用有限的语句来定义对象无限的集合。">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220115155.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122231.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122929.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220123044.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252213506.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252213309.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252213076.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252213897.png">
 <meta property="article:published_time" content="2021-02-20T01:47:18.000Z">
-<meta property="article:modified_time" content="2021-02-20T09:50:02.006Z">
+<meta property="article:modified_time" content="2022-08-25T14:13:38.267Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220115155.png">
+<meta name="twitter:image" content="https://images.mmzi.online//blog/202208252213506.png">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
   
@@ -294,20 +294,20 @@ var _hmt = _hmt || [];
 <h2 id="测试递归"><a href="#测试递归" class="headerlink" title="测试递归"></a>测试递归</h2><h3 id="测试一"><a href="#测试一" class="headerlink" title="测试一"></a>测试一</h3><p>这种使用方式是错误的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.asher;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemoRecursion</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> TestDemoRecursion().test();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		test();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出结果：会出现错误，栈溢出的错误。</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220115155.png" alt="QQ20210220115122"></p>
+<p><img src="https://images.mmzi.online//blog/202208252213506.png" alt="QQ20210220115122"></p>
 <h3 id="测试二"><a href="#测试二" class="headerlink" title="测试二"></a>测试二</h3><p><strong>实例</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemoRecursion</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.print(f(<span class="number">5</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//阶乘例子</span></span><br><span class="line">	<span class="comment">//5！ 5*4*3*2*1</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> n * f(n - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>返回结果：</strong></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122231.png" alt="QQ20210220122158"></p>
+<p><img src="https://images.mmzi.online//blog/202208252213309.png" alt="QQ20210220122158"></p>
 <p><strong>分析结果：</strong></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220122929.png" alt="202102201220"></p>
+<p><img src="https://images.mmzi.online//blog/202208252213076.png" alt="202102201220"></p>
 <p>边界条件：边界值(n==1)</p>
 <p>前阶段：f(n)</p>
 <p>返回阶段：n*(n-1)</p>
 <blockquote>
 <p>缺点：能不用递归则不用递归，基数比较小的时候可以考虑递归用法</p>
 </blockquote>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220123044.png" alt="202102201227"></p>
+<p><img src="https://images.mmzi.online//blog/202208252213897.png" alt="202102201227"></p>
 
     
 

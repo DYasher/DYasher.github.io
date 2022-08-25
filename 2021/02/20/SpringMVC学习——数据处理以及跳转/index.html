@@ -18,17 +18,17 @@
 <meta property="og:site_name" content="小邓同学">
 <meta property="og:description" content="结果跳转方法ModelAndView设置ModelAndView对象 ，根据view的名称 ，和视图解析器跳到指定的页面。 页面：{视图解析器前缀} + viewName +{视图解析器后缀}">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220163959.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220164235.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252207376.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252207330.png">
 <meta property="article:published_time" content="2021-02-20T01:46:07.000Z">
-<meta property="article:modified_time" content="2021-02-20T09:47:03.359Z">
+<meta property="article:modified_time" content="2022-08-25T14:08:06.239Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="SpringMVC">
 <meta property="article:tag" content="页面跳转">
 <meta property="article:tag" content="数据处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220163959.png">
+<meta name="twitter:image" content="https://images.mmzi.online//blog/202208252207376.png">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
   
@@ -337,7 +337,7 @@ var _hmt = _hmt || [];
 <p>2、后台编写对应的处理类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Encoding</span> </span>&#123;</span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/e/t&quot;)</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(Model model,String name)</span></span>&#123;</span><br><span class="line">       model.addAttribute(<span class="string">&quot;msg&quot;</span>,name); <span class="comment">//获取表单提交的值</span></span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;test&quot;</span>; <span class="comment">//跳转到test页面显示输入的值</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3、输入中文测试，发现乱码</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220163959.png" alt="QQ截图20210220163945"></p>
+<p><img src="https://images.mmzi.online//blog/202208252207376.png" alt="QQ截图20210220163945"></p>
 <blockquote>
 <p>不得不说，乱码问题是在我们开发中十分常见的问题，也是让我们程序猿比较头大的问题！</p>
 </blockquote>
@@ -345,7 +345,7 @@ var _hmt = _hmt || [];
 <p>修改了xml文件需要重启服务器！（配置环境也是很重要的，有可能是因为环境问题导致，乱码问题一定要先排除环境问题）</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>utf-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210220164235.png" alt="QQ截图20210220164223"></p>
+<p><img src="https://images.mmzi.online//blog/202208252207330.png" alt="QQ截图20210220164223"></p>
 <blockquote>
 <p>但是我们发现，有些极端情况下，这个过滤器对get的支持不好 。这里先排除环境问题</p>
 </blockquote>

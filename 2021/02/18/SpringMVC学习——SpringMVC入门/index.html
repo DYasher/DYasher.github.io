@@ -18,21 +18,21 @@
 <meta property="og:site_name" content="小邓同学">
 <meta property="og:description" content="1、回顾MVC1.1、什么是MVC MVC是模型(Model)、视图(View)、控制器(Controller)的简写，是一种软件设计规范。 是将业务逻辑、数据、显示分离的方法来组织代码。 MVC主要作用是降低了视图与业务逻辑间的双向偶合。 MVC不是一种设计模式，MVC是一种架构模式。当然不同的MVC存在差异。">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/A84EB031438FAEC77E42CB07E72001EA.jpg">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-1.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-10.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-11.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-13.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-14.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252203441.jpeg">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252204734.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252204938.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252205624.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252205112.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252205437.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252205225.png">
 <meta property="article:published_time" content="2021-02-18T11:13:22.000Z">
-<meta property="article:modified_time" content="2021-02-20T08:30:29.187Z">
+<meta property="article:modified_time" content="2022-08-25T14:05:25.310Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="SpringMVC">
 <meta property="article:tag" content="MVC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/A84EB031438FAEC77E42CB07E72001EA.jpg">
+<meta name="twitter:image" content="https://images.mmzi.online//blog/202208252203441.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
   
@@ -295,14 +295,14 @@ var _hmt = _hmt || [];
 <p><strong>View（视图）：</strong>负责进行模型的展示，一般就是我们见到的用户界面，客户想看到的东西。</p>
 <p><strong>Controller（控制器）：</strong>接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示。也就是说控制器做了个调度员的工作。</p>
 <p><strong>最典型的MVC就是JSP + servlet + javabean的模式。</strong></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/A84EB031438FAEC77E42CB07E72001EA.jpg" alt="A84EB031438FAEC77E42CB07E72001EA"></p>
+<p><img src="https://images.mmzi.online//blog/202208252203441.jpeg" alt="A84EB031438FAEC77E42CB07E72001EA"></p>
 <h3 id="1-2、Model1时代"><a href="#1-2、Model1时代" class="headerlink" title="1.2、Model1时代"></a>1.2、Model1时代</h3><ul>
 <li>在web早期的开发中，通常采用的都是Model1。</li>
 <li>Model1中，主要分为两层，视图层和模型层。</li>
 </ul>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-1.png" alt="640-1"></p>
+<p><img src="https://images.mmzi.online//blog/202208252204734.png" alt="640-1"></p>
 <h3 id="1-3、Model2时代"><a href="#1-3、Model2时代" class="headerlink" title="1.3、Model2时代"></a>1.3、Model2时代</h3><p>Model2把一个项目分成三部分，包括<strong>视图、控制、模型。</strong></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640.png" alt="640"></p>
+<p><img src="https://images.mmzi.online//blog/202208252204938.png" alt="640"></p>
 <ol>
 <li>用户发请求</li>
 <li>Servlet接收请求数据，并调用对应的业务逻辑方法</li>
@@ -357,7 +357,7 @@ var _hmt = _hmt || [];
 </ol>
 <p><strong>说明：</strong></p>
 <p>​    常见的服务器端MVC框架有：Struts、Spring MVC、ASP.NET MVC、Zend Framework、JSF；常见前端MVC框架：vue、angularjs、react、backbone；由MVC演化出了另外一些模式如：MVP、MVVM 等等….</p>
-<h2 id="2、什么是SpringMVC"><a href="#2、什么是SpringMVC" class="headerlink" title="2、什么是SpringMVC"></a>2、什么是SpringMVC</h2><h3 id="2-1、概述"><a href="#2-1、概述" class="headerlink" title="2.1、概述"></a>2.1、概述</h3><p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-10.png" alt="640-10"></p>
+<h2 id="2、什么是SpringMVC"><a href="#2、什么是SpringMVC" class="headerlink" title="2、什么是SpringMVC"></a>2、什么是SpringMVC</h2><h3 id="2-1、概述"><a href="#2-1、概述" class="headerlink" title="2.1、概述"></a>2.1、概述</h3><p><img src="https://images.mmzi.online//blog/202208252205624.png" alt="640-10"></p>
 <p>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架。</p>
 <p>查看官方文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.0.RELEASE/spring-framework-reference/web.html#spring-web">https://docs.spring.io/spring/docs/5.2.0.RELEASE/spring-framework-reference/web.html#spring-web</a></p>
 <p><strong>我们为什么要学习SpringMVC呢?</strong></p>
@@ -376,7 +376,7 @@ var _hmt = _hmt || [];
 <p><strong>最重要的一点还是用的人多 , 使用的公司多 .</strong> </p>
 <h3 id="2-2、中心控制器"><a href="#2-2、中心控制器" class="headerlink" title="2.2、中心控制器"></a>2.2、中心控制器</h3><p>​    Spring的web框架围绕DispatcherServlet设计。DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.5开始，使用Java 5或者以上版本的用户可以采用基于注解的controller声明方式。</p>
 <p>​    Spring MVC框架像许多其他MVC框架一样, <strong>以请求为驱动</strong> , <strong>围绕一个中心Servlet分派请求及提供其他功能</strong>，**DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)**。</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-11.png" alt="640-11"></p>
+<p><img src="https://images.mmzi.online//blog/202208252205112.png" alt="640-11"></p>
 <p>Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级Web框架。</p>
 <p>查看官方文档：<a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/5.2.0.RELEASE/spring-framework-reference/web.html#spring-web">https://docs.spring.io/spring/docs/5.2.0.RELEASE/spring-framework-reference/web.html#spring-web</a></p>
 <p><strong>我们为什么要学习SpringMVC呢?</strong></p>
@@ -395,8 +395,8 @@ var _hmt = _hmt || [];
 <p><strong>最重要的一点还是用的人多 , 使用的公司多 .</strong> </p>
 <h3 id="2-2、中心控制器-1"><a href="#2-2、中心控制器-1" class="headerlink" title="2.2、中心控制器"></a>2.2、中心控制器</h3><p>​    Spring的web框架围绕DispatcherServlet设计。DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.5开始，使用Java 5或者以上版本的用户可以采用基于注解的controller声明方式。</p>
 <p>​    Spring MVC框架像许多其他MVC框架一样, <strong>以请求为驱动</strong> , <strong>围绕一个中心Servlet分派请求及提供其他功能</strong>，**DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)**。</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-13.png" alt="官方翻译图"></p>
-<h3 id="2-3、SpringMVC执行原理"><a href="#2-3、SpringMVC执行原理" class="headerlink" title="2.3、SpringMVC执行原理"></a>2.3、SpringMVC执行原理</h3><p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/640-14.png" alt="SpringMVC执行原理流程图"></p>
+<p><img src="https://images.mmzi.online//blog/202208252205437.png" alt="官方翻译图"></p>
+<h3 id="2-3、SpringMVC执行原理"><a href="#2-3、SpringMVC执行原理" class="headerlink" title="2.3、SpringMVC执行原理"></a>2.3、SpringMVC执行原理</h3><p><img src="https://images.mmzi.online//blog/202208252205225.png" alt="SpringMVC执行原理流程图"></p>
 <blockquote>
 <p>图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现。</p>
 </blockquote>

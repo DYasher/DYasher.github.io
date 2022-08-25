@@ -18,16 +18,16 @@
 <meta property="og:site_name" content="小邓同学">
 <meta property="og:description" content="解决群晖Docker无法启动容器OCI runtime create failed: container with id exists报错环境硬件：黑群晖918+ DSM：DSM 6.2.1-23824 Update 1 Docker：18.09.0-0519 问题以最高权限装载第一个Container之后，尝试启动第二个Container的时候显示报错：Start container jelly">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/Blog/21-05-28/1.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210407003036.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210407100742.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252215996.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252215980.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252215798.png">
 <meta property="article:published_time" content="2021-04-06T16:03:40.000Z">
-<meta property="article:modified_time" content="2021-05-27T16:36:21.393Z">
+<meta property="article:modified_time" content="2022-08-25T14:15:40.144Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="群晖">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/asheryb/my-images/raw/master/Blog/21-05-28/1.png">
+<meta name="twitter:image" content="https://images.mmzi.online//blog/202208252215996.png">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
   
@@ -284,8 +284,8 @@ var _hmt = _hmt || [];
 <p><strong>DSM：</strong>DSM 6.2.1-23824 Update 1</p>
 <p><strong>Docker：</strong>18.09.0-0519</p>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>以最高权限装载第一个Container之后，尝试启动第二个Container的时候显示报错：Start container jellyfin-jellyfin1 failed: {“message”:”OCI runtime create failed: container with id exists: b6803073dc958105e437ebe000efeab37d215c3e054af3fcdbcccc7fdd289a7e: unknown”}.<a id="more"></a></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/Blog/21-05-28/1.png" alt="错误补图1"></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210407003036.png" alt="错误显示2"></p>
+<p><img src="https://images.mmzi.online//blog/202208252215996.png" alt="错误补图1"></p>
+<p><img src="https://images.mmzi.online//blog/202208252215980.png" alt="错误显示2"></p>
 <h2 id="网上提供的方法："><a href="#网上提供的方法：" class="headerlink" title="网上提供的方法："></a>网上提供的方法：</h2><h3 id="测试过程"><a href="#测试过程" class="headerlink" title="测试过程"></a>测试过程</h3><ol>
 <li>首次安装了CentOS官方镜像，名称CentWeb，版本Latest，启用Init，启用“自动重启”，运行正常</li>
 <li>再次创建第二个Docker从CentOS官方镜像名称CentKMS，使用同样方法，启用init，启用“自动重启”功能，启动失败，显示错误信息OCI runtime create failed: container with id exist</li>
@@ -320,7 +320,7 @@ var _hmt = _hmt || [];
 <h2 id="解决方案（亲测有效）"><a href="#解决方案（亲测有效）" class="headerlink" title="解决方案（亲测有效）"></a>解决方案（亲测有效）</h2><h3 id="问题产生的根本原因"><a href="#问题产生的根本原因" class="headerlink" title="问题产生的根本原因"></a>问题产生的根本原因</h3><p>经过测试，我的黑群晖服务器docker服务产生以上问题的根本原因是因为机器经常过热关机，这种机制是群晖保护系统的保护机制，当系统硬件温度到达机器能承受的固定点，机器就会异常关机，这时候docker也会异常关闭，所以导致以上问题。网上一些博客说是因为docker宿主主机关闭，docker没有关闭，docker容器的服务没有正常退出，但再次开机进入docker时就会产生冲突，就是原来强迫关闭的服务没有销毁，当再次开机打开docker时候会产生两个相同的id，所以出现OCI runtime create failed: container with id exists。</p>
 <h3 id="实行方案"><a href="#实行方案" class="headerlink" title="实行方案"></a>实行方案</h3><p><strong>方法一</strong></p>
 <p>避免因为宿主主机异常关机导致docker服务关闭后再开启产生该情况，对容器进行设置。</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/PicGo/20210407100742.png" alt="群晖docker设置"></p>
+<p><img src="https://images.mmzi.online//blog/202208252215798.png" alt="群晖docker设置"></p>
 <p><strong>方法二</strong></p>
 <ol>
 <li><p>登陆SSH</p>

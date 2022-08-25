@@ -18,16 +18,16 @@
 <meta property="og:site_name" content="小邓同学">
 <meta property="og:description" content="事务什么是事务 事务在项目开发过程中十分重要，涉及到数据的一致性的问题。  事务管理是企业级应用程序开发中必备技术，用来确保数据的完整性和一致性。  事务就是把一系列的动作作为一个独立的单元，这些动作要么全部完成，要么全部不起作用。">
 <meta property="og:locale">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-152404@2x.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-152922@2x.png">
-<meta property="og:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-153017@2x.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252210125.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252210124.png">
+<meta property="og:image" content="https://images.mmzi.online//blog/202208252210306.png">
 <meta property="article:published_time" content="2021-02-04T07:01:20.000Z">
-<meta property="article:modified_time" content="2021-02-04T09:30:04.000Z">
+<meta property="article:modified_time" content="2022-08-25T14:11:03.229Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Spring">
 <meta property="article:tag" content="事务管理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-152404@2x.png">
+<meta name="twitter:image" content="https://images.mmzi.online//blog/202208252210125.png">
   
     <link rel="alternative" href="/atom.xml" title="小邓同学" type="application/atom+xml">
   
@@ -316,10 +316,10 @@ var _hmt = _hmt || [];
 <p>3、测试</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//  添加用户</span></span><br><span class="line">        <span class="keyword">int</span> i=userService.addUser(<span class="keyword">new</span> User(<span class="number">4</span>, <span class="string">&quot;asher&quot;</span>, <span class="string">&quot;1234567&quot;</span>));</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        <span class="comment">// 删除用户</span></span><br><span class="line">        <span class="keyword">int</span> j =userService.deleteUser(<span class="number">4</span>);</span><br><span class="line">        System.out.println(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>4、数据库开始数据</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-152404@2x.png" alt="QQ20210204-152404@2x"></p>
+<p><img src="https://images.mmzi.online//blog/202208252210125.png" alt="QQ20210204-152404@2x"></p>
 <p>5、运行结果</p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-152922@2x.png" alt="QQ20210204-152922@2x"></p>
-<p><img src="https://gitee.com/asheryb/my-images/raw/master/uPicBlog/2021-2-4/QQ20210204-153017@2x.png" alt="QQ20210204-153017@2x"></p>
+<p><img src="https://images.mmzi.online//blog/202208252210124.png" alt="QQ20210204-152922@2x"></p>
+<p><img src="https://images.mmzi.online//blog/202208252210306.png" alt="QQ20210204-153017@2x"></p>
 <p>没有进行事务的管理；我们想让他们都成功才成功，有一个失败，就都失败，我们就应该需要<strong>事务！</strong></p>
 <p>在过去，我们使用手动管理事务是很麻烦的，现在使用Spring框架提供的事务管理机制，可以释放我们双手，只要配置好就行了。</p>
 <h2 id="Spring事务管理"><a href="#Spring事务管理" class="headerlink" title="Spring事务管理"></a>Spring事务管理</h2><p>Spring在不同的事务管理API之上定义了一个抽象层，使得开发人员不必了解底层的事务管理API就可以使用Spring的事务管理机制。Spring支持编程式事务管理和声明式的事务管理。</p>
