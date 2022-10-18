@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210180000624.png">
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210180042617.png">
 <meta property="article:published_time" content="2022-10-18T14:01:08.000Z">
-<meta property="article:modified_time" content="2022-10-18T14:17:13.220Z">
+<meta property="article:modified_time" content="2022-10-18T14:23:36.633Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="Monkey">
 <meta property="article:tag" content="自动化测试">
@@ -483,14 +483,10 @@ var _hmt = _hmt || [];
 <p>查看log中第一个Switch，主要是查看Monkey执行的是那一个Activity，譬如下面的log中，执行的是com.tencent.smtt.SplashActivity，在下一个swtich之间的，如果出现了崩溃或其他异常，可以在该Activity中查找问题的所在。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:Switch:#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tencent.smtt/.SplashActivity;end</span><br><span class="line"></span><br><span class="line"> // Allowing start of Intent &#123;act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER]cmp=com.tencent.smtt/.SplashActivity &#125; in package com.tencent.smtt</span><br></pre></td></tr></table></figure>
 <p>3)内存泄漏</p>
-<ol>
-<li><p>内存泄漏弹出out of memory对话框</p>
-</li>
-<li><p>对于有内存泄漏但是没有单出out of memory对话框的情况，可以通过logcat文件GC出信息，(GC:java的垃圾回收机制)<br><strong>GC_FOR_ALLOC</strong>：因为在分配内存时候内存不够引起的<br><strong>GC_EXPLICIT：</strong>表明GC被显式请求触发的，如System.gc调用，<br><strong>GC_CONCCURRENT：</strong>表明GC在内存使用率达到一定的警戒值时候，自动触发<br><strong>GC_BEFORE_OOM：</strong>表明在虚拟机抛出内存不够异常oom之前，执行最后一次回收内存垃圾</p>
-</li>
-<li><p>发现内存泄露–内存报告分析（利用hprof参数的内存快照生成内存报告）</p>
-<p>在发现内存泄露后，可以执行相同的monkey，只需多加一个参数–hprof </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell monkey -p 包名  --hprof --throttle 100  --pct-touch 50 --pct-motion 50 -v -v -v 1000 &gt;c:\monkey.txt</span><br></pre></td></tr></table></figure>
+<p>a、内存泄漏弹出out of memory对话框</p>
+<p>b、对于有内存泄漏但是没有单出out of memory对话框的情况，可以通过logcat文件GC出信息，(GC:java的垃圾回收机制)<br><strong>GC_FOR_ALLOC</strong>：因为在分配内存时候内存不够引起的<br><strong>GC_EXPLICIT：</strong>表明GC被显式请求触发的，如System.gc调用，<br><strong>GC_CONCCURRENT：</strong>表明GC在内存使用率达到一定的警戒值时候，自动触发<br><strong>GC_BEFORE_OOM：</strong>表明在虚拟机抛出内存不够异常oom之前，执行最后一次回收内存垃圾</p>
+<p>c、发现内存泄露–内存报告分析（利用hprof参数的内存快照生成内存报告）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">在发现内存泄露后，可以执行相同的monkey，只需多加一个参数--hprof</span> </span><br><span class="line">adb shell monkey -p 包名  --hprof --throttle 100  --pct-touch 50 --pct-motion 50 -v -v -v 1000 &gt;c:\monkey.txt</span><br></pre></td></tr></table></figure>
 <p>如果指定了这个选项，monkey会在发送时间的前后生成app内存快照文件，一般会在手机设备的/data/misc目录下生成hprof的文件。</p>
 <blockquote>
 <ul>
@@ -499,8 +495,6 @@ var _hmt = _hmt || [];
 <li>转化后的文件用eclipse的Memory Analyzer tool(MAT)查看（此插件可以下载），可以点击 Reports-&gt;Leak Suspects链接来生成报告。</li>
 </ul>
 </blockquote>
-</li>
-</ol>
 </li>
 </ol>
 <h3 id="结果分析脚本"><a href="#结果分析脚本" class="headerlink" title="结果分析脚本"></a>结果分析脚本</h3><p>首先第一步安装Android SDK，完成后。编写测试脚本，此脚本已经编写好来源于网络。具体大家可以从网上Google针对自己的情况再进行详细的编改。</p>
