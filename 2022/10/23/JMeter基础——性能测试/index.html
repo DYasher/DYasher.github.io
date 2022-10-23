@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210231440390.png">
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210231441557.png">
 <meta property="article:published_time" content="2022-10-23T07:05:11.000Z">
-<meta property="article:modified_time" content="2022-10-23T07:41:02.089Z">
+<meta property="article:modified_time" content="2022-10-23T07:48:57.064Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="自动化测试">
 <meta property="article:tag" content="性能测试">
@@ -874,7 +874,7 @@ var _hmt = _hmt || [];
 </li>
 <li>添加查看结果树；</li>
 </ol>
-<h4 id="JMeter属性"><a href="#JMeter属性" class="headerlink" title="JMeter属性"></a>JMeter属性</h4><p><strong>作用：</strong>需要实现跨线程组的数据传输时，可以使用JMeter属性。<br><strong>位置：</strong>测试计划–&gt;线程组–&gt;BeanShell**(_setProperty)<strong>。<br>**参数：</strong></p>
+<h4 id="JMeter属性"><a href="#JMeter属性" class="headerlink" title="JMeter属性"></a>JMeter属性</h4><p><strong>作用：</strong>需要实现跨线程组的数据传输时，可以使用JMeter属性。<br><strong>位置：</strong>测试计划–&gt;线程组–&gt;BeanShell–&gt;(_setProperty)。<br><strong>参数：</strong></p>
 <p><img src="https://images.mmzi.online//blog/20220831/202210231421100.png" alt="image-20221023142152982"></p>
 <ul>
 <li><p><strong>_setProperty函数：</strong>将值保存成JMeter属性。</p>
@@ -929,12 +929,8 @@ var _hmt = _hmt || [];
 <p><strong>设置端口：</strong>代理服务器的端口号；</p>
 <p><strong>目标控制器：</strong>录制的脚本放到哪个容器（线程组）中；</p>
 <p><strong>Requests Filtering(过滤条件 - url匹配正则表达式)：</strong></p>
-<ul>
-<li><p>包含模式：包含此项，如：，.<em>localhost.</em>:；</p>
-</li>
-<li><p>排除模式：不包含此项，如：.<em>.jpg .</em>.png .*.js；</p>
-</li>
-</ul>
+<p>​    <strong>包含模式：</strong>包含此项，如：，.<em>localhost.</em>:；</p>
+<p>​    <strong>排除模式：</strong>不包含此项，如：.<em>.jpg .</em>.png .*.js；</p>
 </li>
 <li><p>开启Windows操作系统的浏览器代理；</p>
 <p><img src="https://images.mmzi.online//blog/20220831/202210231427255.png" alt="image-20221023142711127"></p>
