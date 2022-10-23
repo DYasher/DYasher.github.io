@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210231440390.png">
 <meta property="og:image" content="https://images.mmzi.online//blog/20220831/202210231441557.png">
 <meta property="article:published_time" content="2022-10-23T07:05:11.000Z">
-<meta property="article:modified_time" content="2022-10-23T07:33:04.535Z">
+<meta property="article:modified_time" content="2022-10-23T07:41:02.089Z">
 <meta property="article:author" content="小邓同学">
 <meta property="article:tag" content="自动化测试">
 <meta property="article:tag" content="性能测试">
@@ -874,7 +874,7 @@ var _hmt = _hmt || [];
 </li>
 <li>添加查看结果树；</li>
 </ol>
-<h4 id="JMeter属性"><a href="#JMeter属性" class="headerlink" title="JMeter属性"></a>JMeter属性</h4><p><strong>作用：</strong>需要实现跨线程组的数据传输时，可以使用JMeter属性。<br><strong>位置：</strong>测试计划–&gt;线程组–&gt;BeanShell**(_setProperty)。<br>参数：**</p>
+<h4 id="JMeter属性"><a href="#JMeter属性" class="headerlink" title="JMeter属性"></a>JMeter属性</h4><p><strong>作用：</strong>需要实现跨线程组的数据传输时，可以使用JMeter属性。<br><strong>位置：</strong>测试计划–&gt;线程组–&gt;BeanShell**(_setProperty)<strong>。<br>**参数：</strong></p>
 <p><img src="https://images.mmzi.online//blog/20220831/202210231421100.png" alt="image-20221023142152982"></p>
 <ul>
 <li><p><strong>_setProperty函数：</strong>将值保存成JMeter属性。</p>
@@ -924,22 +924,15 @@ var _hmt = _hmt || [];
 <ol>
 <li><p>添加HTTP代理服务器，并进行配置：</p>
 <p><img src="https://images.mmzi.online//blog/20220831/202210231426732.png" alt="image-20221023142644575"></p>
-<ul>
-<li><p>加HTTP代理服务器：测试计划（右键）–&gt; 非测试元件–&gt; HTTP代理服务器；</p>
-</li>
-<li><p>配置代理服务器的参数；</p>
-</li>
-<li><p>设置端口：代理服务器的端口号；</p>
-</li>
-<li><p>目标控制器：录制的脚本放到哪个容器（线程组）中；</p>
-</li>
-<li><p>Requests Filtering(过滤条件 - url匹配正则表达式)：</p>
+<p>1）<strong>加HTTP代理服务器：</strong>测试计划（右键）–&gt; 非测试元件–&gt; HTTP代理服务器；</p>
+<p>2）<strong>配置代理服务器的参数：</strong></p>
+<p><strong>设置端口：</strong>代理服务器的端口号；</p>
+<p><strong>目标控制器：</strong>录制的脚本放到哪个容器（线程组）中；</p>
+<p><strong>Requests Filtering(过滤条件 - url匹配正则表达式)：</strong></p>
 <ul>
 <li><p>包含模式：包含此项，如：，.<em>localhost.</em>:；</p>
 </li>
 <li><p>排除模式：不包含此项，如：.<em>.jpg .</em>.png .*.js；</p>
-</li>
-</ul>
 </li>
 </ul>
 </li>
@@ -1137,8 +1130,8 @@ var _hmt = _hmt || [];
 <p><strong>案例要求：</strong></p>
 <ul>
 <li>模拟用户真实的业务场景要求：20 QPS；</li>
-<li>如果线程数设置为1，则目标吞吐量设置为*<em>20</em>60=1200**；</li>
-<li>如果线程数设置为2，则目标吞吐量设置为*<em>20</em>60/2=600**；</li>
+<li>如果线程数设置为1，则目标吞吐量设置为：20*60=1200；</li>
+<li>如果线程数设置为2，则目标吞吐量设置为：20*60/2=600；</li>
 </ul>
 
     
